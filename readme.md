@@ -9,11 +9,15 @@
 
 ## Why?
 
-To help speed up productivity in React projects and stop copying, pasting, and renaming files each time you want to create a new component.
+To help speed up productivity in React projects and stop copying, pasting, and renaming files each time you want to
+create a new component.
 
-A short [article](https://dev.to/arminbro/generate-react-cli-1ooh) that goes a little deeper into why we created GRC if you have the time.
+A short [article](https://dev.to/arminbro/generate-react-cli-1ooh) that goes a little deeper into why we created GRC if
+you have the time.
 
-Suppose you enjoy learning by watching tutorial videos. Here's an excellent [video](https://www.youtube.com/watch?v=NEvnt3MWttY) on how to use GRC by [Eric Murphy](https://www.youtube.com/channel/UC5KDiSAFxrDWhmysBcNqtMA).
+Suppose you enjoy learning by watching tutorial videos. Here's an
+excellent [video](https://www.youtube.com/watch?v=NEvnt3MWttY) on how to use GRC
+by [Eric Murphy](https://www.youtube.com/channel/UC5KDiSAFxrDWhmysBcNqtMA).
 
 **_A few notes:_**
 
@@ -21,8 +25,12 @@ Suppose you enjoy learning by watching tutorial videos. Here's an excellent [vid
 - Now supports custom component templates ([read more](#custom-component-templates)). 🎉
 - Now supports custom component files ([read more](#custom-component-files)). 🎉
 - Supports React [TypeScript](https://www.typescriptlang.org/) projects.
-- Supports two different component testing libraries - [Testing Library](https://testing-library.com) and [Enzyme](https://airbnb.io/enzyme) - that work with [Jest](https://jestjs.io/). We assume that you have these libraries already configured in your React project.
-- It follows [grouping by feature](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type) because we believe when you look at a component, you should see all of its corresponding files (i.e., stylesheet, test, and component) under one folder with the feature name. We feel this approach provides a better developer experience.
+- Supports two different component testing libraries - [Testing Library](https://testing-library.com)
+  and [Enzyme](https://airbnb.io/enzyme) - that work with [Jest](https://jestjs.io/). We assume that you have these
+  libraries already configured in your React project.
+- It follows [grouping by feature](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type) because we believe
+  when you look at a component, you should see all of its corresponding files (i.e., stylesheet, test, and component)
+  under one folder with the feature name. We feel this approach provides a better developer experience.
 
 ## You can run it using npx like this:
 
@@ -30,11 +38,13 @@ Suppose you enjoy learning by watching tutorial videos. Here's an excellent [vid
   npx generate-react-cli component Box
 ```
 
-_([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) is a package runner tool that comes with npm 5.2+)_
+_([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) is a package runner tool that
+comes with npm 5.2+)_
 
 ## Config File
 
-When you run GRC within your project the first time, it will ask you a series of questions to customize the cli for your project needs (this will create a "generate-react-cli.json" config file).
+When you run GRC within your project the first time, it will ask you a series of questions to customize the cli for your
+project needs (this will create a "generate-react-cli.json" config file).
 
 #### Example of the **generate-react-cli.json** config file:
 
@@ -62,7 +72,8 @@ When you run GRC within your project the first time, it will ask you a series of
   npx generate-react-cli component Box
 ```
 
-This command will create a folder with your component name within your default (e.g. **src/components**) directory, and its corresponding files.
+This command will create a folder with your component name within your default (e.g. **src/components**) directory, and
+its corresponding files.
 
 #### Example of the component files structure:
 
@@ -72,12 +83,13 @@ This command will create a folder with your component name within your default (
         |-- /Box
             |-- Box.js
             |-- Box.css
-            |-- Box.test.js
+            |-- Box.test.ts
 ```
 
 ### Options
 
-You can also override some of the GRC component config rules using one-off commands. So for example, let's say you have set **withTest** to be `true` in the `component.default` property. You can override it like this:
+You can also override some of the GRC component config rules using one-off commands. So for example, let's say you have
+set **withTest** to be `true` in the `component.default` property. You can override it like this:
 
 ```
   npx generate-react-cli component Box --withTest=false
@@ -89,7 +101,8 @@ Or vice versa, if you have set **withTest** to be `false` you can do this:
   npx generate-react-cli component Box --withTest=true
 ```
 
-Otherwise, if you don't pass any options, it will just use the default values that you have set in the GRC config file under `component.default`.
+Otherwise, if you don't pass any options, it will just use the default values that you have set in the GRC config file
+under `component.default`.
 
 <table>
   <tr align="left">
@@ -165,7 +178,8 @@ Otherwise, if you don't pass any options, it will just use the default values th
 
 By default, GRC will use the `component.default` configuration rules when running the component command out of the box.
 
-What if you wanted to generate other types of components that have their own set of config rules (e.g., **page** or **layout**)?
+What if you wanted to generate other types of components that have their own set of config rules (e.g., **page** or **
+layout**)?
 
 You can do so by extending the **generate-react-cli.json** config file like this.
 
@@ -211,27 +225,32 @@ Now you can generate a component with your custom component types like this:
   npx generate-react-cli component BoxLayout --type=layout
 ```
 
-You can also pass the same [options](#options) to your custom component types as you would for the default component type.
+You can also pass the same [options](#options) to your custom component types as you would for the default component
+type.
 
 ### Custom component templates
 
-You can also create your own custom templates that GRC can use instead of the built-in templates that come with it. We hope this will provide more flexibility for your components that you want to generate.
+You can also create your own custom templates that GRC can use instead of the built-in templates that come with it. We
+hope this will provide more flexibility for your components that you want to generate.
 
-There is an optional `customTemplates` object that you can pass to the `component.default` or any of your custom component types within your **generate-react-cli.json** config file.
+There is an optional `customTemplates` object that you can pass to the `component.default` or any of your custom
+component types within your **generate-react-cli.json** config file.
 
 #### Example of the `customTemplates` object:
 
 ```json
 "customTemplates": {
-  "component": "templates/TemplateName.js",
-  "lazy":  "templates/TemplateName.lazy.js",
-  "story":  "templates/TemplateName.story.js",
-  "style": "templates/TemplateName.style.scss",
-  "test":  "templates/TemplateName.test.js"
+"component": "templates/TemplateName.js",
+"lazy": "templates/TemplateName.lazy.js",
+"story": "templates/TemplateName.story.js",
+"style": "templates/TemplateName.style.scss",
+"test": "templates/TemplateName.test.ts"
 },
 ```
 
-The keys represent the type of file, and the values are the paths that point to where your custom template lives in your project/system. Please note the `TemplateName` keyword in the template filename. GRC will use this keyword and replace it with your component name (in whichever format you typed the component name in the command) as the filename.
+The keys represent the type of file, and the values are the paths that point to where your custom template lives in your
+project/system. Please note the `TemplateName` keyword in the template filename. GRC will use this keyword and replace
+it with your component name (in whichever format you typed the component name in the command) as the filename.
 
 #### Example of using the `customTemplates` object within your generate-react-cli.json config file:
 
@@ -246,7 +265,7 @@ The keys represent the type of file, and the values are the paths that point to 
       "customTemplates": {
         "component": "templates/component/TemplateName.js",
         "style": "templates/component/TemplateName.style.scss",
-        "test": "templates/component/TemplateName.test.js"
+        "test": "templates/component/TemplateName.test.ts"
       },
       "path": "src/components",
       "withStyle": true,
@@ -256,7 +275,7 @@ The keys represent the type of file, and the values are the paths that point to 
     },
     "page": {
       "customTemplates": {
-        "test": "templates/page/TemplateName.test.js"
+        "test": "templates/page/TemplateName.test.ts"
       },
       "path": "src/pages",
       "withLazy": true,
@@ -268,7 +287,9 @@ The keys represent the type of file, and the values are the paths that point to 
 }
 ```
 
-Notice in the `page.customTemplates` that we only specified the `test` custom template type. That's because all the custom template types are optional. If you don't set the other types, GRC will default to using the built-in templates it comes with.
+Notice in the `page.customTemplates` that we only specified the `test` custom template type. That's because all the
+custom template types are optional. If you don't set the other types, GRC will default to using the built-in templates
+it comes with.
 
 #### Example of a custom component template file:
 
@@ -279,15 +300,16 @@ import React from 'react';
 import styles from './TemplateName.module.css';
 
 const TemplateName = () => (
-  <div className={styles.TemplateName} data-testid="TemplateName">
-    <h1>TemplateName component</h1>
-  </div>
+    <div className={styles.TemplateName} data-testid="TemplateName">
+        <h1>TemplateName component</h1>
+    </div>
 );
 
 export default TemplateName;
 ```
 
-**Important** - You can also use the following keywords within your custom templates to format the component name in your templates accordingly:
+**Important** - You can also use the following keywords within your custom templates to format the component name in
+your templates accordingly:
 
 | Keyword         | Replacement                                                                                    |
 | --------------- | ---------------------------------------------------------------------------------------------- |
@@ -301,26 +323,29 @@ export default TemplateName;
 #### Example of a custom test template file:
 
 ```jsx
-// templates/component/TemplateName.test.js
+// templates/component/TemplateName.test.ts
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TemplateName from './TemplateName';
 
 it('It should mount', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<TemplateName />, div);
-  ReactDOM.unmountComponentAtNode(div);
+    const div = document.createElement('div');
+    ReactDOM.render(<TemplateName/>, div);
+    ReactDOM.unmountComponentAtNode(div);
 });
 ```
 
 ### Custom component files
 
-GRC comes with corresponding built-in files for a given component if you need them (i.e., `withStyle`, `withTest`, `withStory`, and `withLazy`).
+GRC comes with corresponding built-in files for a given component if you need them (i.e., `withStyle`, `withTest`
+, `withStory`, and `withLazy`).
 
 What if you wanted to add custom files of your own?
 
-For example, let's say you wanted to add an `index.js` file for each component, so you don't have to add the additional component name with each import (i.e., `import Box from './components/Box'` instead of `import Box from './components/Box/Box'`).
+For example, let's say you wanted to add an `index.tsx` file for each component, so you don't have to add the additional
+component name with each import (i.e., `import Box from './components/Box'` instead
+of `import Box from './components/Box/Box'`).
 
 Or maybe you need an additional style file for your component stories.
 
@@ -342,7 +367,7 @@ You can do so by editing your **generate-react-cli.json** config file like so.
       "withIndex": true,
       "withStoryStyle": true,
       "customTemplates": {
-        "index": "templates/default/index.js",
+        "index": "templates/default/index.tsx",
         "storyStyle": "templates/default/TemplateName.stories.css"
       }
     }
@@ -351,9 +376,9 @@ You can do so by editing your **generate-react-cli.json** config file like so.
 ```
 
 ```jsx
-// templates/default/index.js
+// templates/default/index.tsx
 
-export { default } from './TemplateName';
+export {default} from './TemplateName';
 ```
 
 ```css
@@ -363,12 +388,16 @@ export { default } from './TemplateName';
 }
 ```
 
-In this case, we added a `withIndex` & `withStoryStyle` to the `component.default`. Note: You can add custom files to any of your custom component types.
+In this case, we added a `withIndex` & `withStoryStyle` to the `component.default`. Note: You can add custom files to
+any of your custom component types.
 
-You should also see that we added `index` and `storyStyle` to our `customTemplates` object. That's because custom files require custom templates. Otherwise, you will get an error when you generate a component.
+You should also see that we added `index` and `storyStyle` to our `customTemplates` object. That's because custom files
+require custom templates. Otherwise, you will get an error when you generate a component.
 
-Also, we used the `TemplateName` keyword for the `storyStyle` custom file. GRC will generate this corresponding file and replace `TemplateName` with the component name.
+Also, we used the `TemplateName` keyword for the `storyStyle` custom file. GRC will generate this corresponding file and
+replace `TemplateName` with the component name.
 
 ## License
 
-Generate React CLI is open source software [licensed as MIT](https://github.com/arminbro/generate-react-cli/blob/master/LICENSE).
+Generate React CLI is open source
+software [licensed as MIT](https://github.com/arminbro/generate-react-cli/blob/master/LICENSE).
